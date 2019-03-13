@@ -38,9 +38,10 @@ public class LoopJuegoController {
         BasicPlayer player = new BasicPlayer();
         try {
             player.open(new URL("file:///" + pathToMp3));
-            for (int i = 0; i < 3; i++) {
-                player.play();
-            }
+            player.play();
+            player.play();
+            player.play();
+            
         } catch (BasicPlayerException | MalformedURLException e) {
             e.printStackTrace();
         }

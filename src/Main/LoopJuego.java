@@ -60,7 +60,7 @@ public class LoopJuego extends AnimationTimer {
     private int secuencia3 = 0;
     private int numero;
     private int tiempovida = 0;
-    private int vidas = 5;
+    private int vidas = 10;
     private int contador = 100;
     private String marca = "RIGHT";
     private ArrayList<String> pulsacionTeclado = null;
@@ -139,7 +139,7 @@ public class LoopJuego extends AnimationTimer {
             controlador.mostrarVista();
             String score = String.valueOf(puntaje);
             controlador.setScore(score);
-            vidas = 5;
+            vidas = 10;
         } else if (!pausa) {
             lapiz.clearRect(0, 0, 1800, 520);
 
@@ -518,7 +518,7 @@ public class LoopJuego extends AnimationTimer {
                 }
                 this.salto--;
             }
-            if ((pulsacionTeclado.contains("SPACE")) && (ninja.getYref() == 455.0)) {
+            if ((pulsacionTeclado.contains("UP")) && (ninja.getYref() == 455.0)) {
                 salto = 20;
             }
 
@@ -539,7 +539,7 @@ public class LoopJuego extends AnimationTimer {
                     }
                     this.salto--;
                 }
-                if ((pulsacionTeclado.contains("SPACE")) && (ninja.getYref() == 455.0)) {
+                if ((pulsacionTeclado.contains("UP")) && (ninja.getYref() == 455.0)) {
                     salto = 20;
                 }
             }

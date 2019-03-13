@@ -40,6 +40,7 @@ public class LoopJuego extends AnimationTimer {
     private Enemigosimple minotauro;
     private Enemigosimple hongo;
     private Enemigosimple minotauro2;
+    private Image arrow;
     private Image cepamala;
     private Image ninjaImD;
     private Image ninjaImDN;
@@ -90,6 +91,7 @@ public class LoopJuego extends AnimationTimer {
         this.fondo = new Image("Images/CITY_MEGA sin fondo.png");
         this.fondo2 = new Image("Images/Nivel2.png");
         this.fondo3 = new Image("Images/Nivel3.png");
+        this.arrow = new Image("Images/arrow_sheet.png");
         this.ninjaImD = new Image("Images/rogue spritesheet calciumtrice.png");
         this.ninjaImDN = new Image("Images/rogue spritesheet calciumtrice negativo.png");
         this.ninjaImI = new Image("Images/rogue spritesheet calciumtrice IZ.png");
@@ -135,10 +137,12 @@ public class LoopJuego extends AnimationTimer {
             debounceP = 15;
         }
         if (vidas < 0) {
+            stop();
             VentanafinalController controlador = new VentanafinalController(model);
             controlador.mostrarVista();
             String score = String.valueOf(puntaje);
             controlador.setScore(score);
+            puntaje = 0;
             vidas = 10;
         } else if (!pausa) {
             lapiz.clearRect(0, 0, 1800, 520);
@@ -168,7 +172,7 @@ public class LoopJuego extends AnimationTimer {
             }
 
             //shape del personaje
-            Shape sNinja = new Rectangle(ninja.getXref() + 5, ninja.getYref(), ninja.getAncho() - 10, ninja.getAlto());
+            Shape sNinja = new Rectangle(ninja.getXref() + 15, ninja.getYref(), ninja.getAncho() - 18, ninja.getAlto());
             Shape sEsqueleto = new Rectangle(esqueleto.getXref(), esqueleto.getYref(), 23, 38);
             Shape sMinotauro = new Rectangle(minotauro.getXref() + 25, minotauro.getYref() + 10, 28, 35);
             Shape sHongo = new Rectangle(hongo.getXref(), hongo.getYref(), 25, 25);
@@ -180,6 +184,9 @@ public class LoopJuego extends AnimationTimer {
                 if (ninja.getxAbs() == 794) {
                     ninja.setrefX(760);
                 }
+                
+                lapiz.strokeText("Nivel 1 ", 400, 17);
+                
                 Shape h1 = new Rectangle(180, 491, 22, 22);
                 Shape h2 = new Rectangle(480, 491, 22, 22);
                 Shape pared = new Rectangle(-20, 0, 2, 500);
@@ -242,12 +249,18 @@ public class LoopJuego extends AnimationTimer {
                         ninja.setrefX(764);
                         ninja.setxAbs(762);
                     }
+                }else{
+                    lapiz.drawImage(arrow, 28*secuencia3, 0, 28, 21, 750, 450, 30, 23);
+                    lapiz.drawImage(arrow, 28*secuencia3, 21, 28, 21, 750, 450, 30, 23);
                 }
                 //*******************Escena 2**************************
             } else if (ninja.getxAbs() >= 796 && ninja.getxAbs() < 1592) {
                 if (ninja.getxAbs() == 796) {//796
                     ninja.setrefX(0);//0
                 }
+                
+                lapiz.strokeText("Nivel 2 ", 400, 17);
+                
                 Shape pared = new Rectangle(4, 0, 2, 500);
                 Shape pared2 = new Rectangle(804, 0, 4, 500);
                 Shape h1 = new Rectangle(180, 491, 22, 22);
@@ -281,6 +294,9 @@ public class LoopJuego extends AnimationTimer {
                         System.out.println(interseccion2.getBoundsInLocal().getWidth());
 
                     }
+                }else{
+                    lapiz.drawImage(arrow, 28*secuencia3, 0, 28, 21, 750, 450, 30, 23);
+                    lapiz.drawImage(arrow, 28*secuencia3, 21, 28, 21, 750, 450, 30, 23);
                 }
 
                 if (!comprobacion) {
@@ -325,6 +341,8 @@ public class LoopJuego extends AnimationTimer {
                 if (ninja.getxAbs() == 1592) {
                     ninja.setrefX(0);
                 }
+                
+                lapiz.strokeText("Nivel 3(FINAL)", 400, 17);
 
                 Shape pared = new Rectangle(4, 0, 2, 500);
                 Shape pared2 = new Rectangle(804, 0, 2, 500);
@@ -542,6 +560,10 @@ public class LoopJuego extends AnimationTimer {
                 if ((pulsacionTeclado.contains("UP")) && (ninja.getYref() == 455.0)) {
                     salto = 20;
                 }
+            }
+            
+            if (vidas == 0) {
+                
             }
 
             //imagen de la salud actual

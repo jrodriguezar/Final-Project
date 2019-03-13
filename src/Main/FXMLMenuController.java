@@ -33,6 +33,10 @@ public class FXMLMenuController implements Initializable {
         MenuController controller = new MenuController(modelo);
         controller.PuntajeButton();
     }
+    @FXML
+    private void SalirButtonAction(ActionEvent event) throws IOException{//Cuando Puntaje es oprimido
+        System.exit(0);
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

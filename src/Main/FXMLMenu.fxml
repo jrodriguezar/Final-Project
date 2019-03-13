@@ -23,5 +23,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Button layoutX="315.0" layoutY="320.0" mnemonicParsing="false" onAction="#SalirButtonAction" prefHeight="33.0" prefWidth="181.0" text="Salir">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
